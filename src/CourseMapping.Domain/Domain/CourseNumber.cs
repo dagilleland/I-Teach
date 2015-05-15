@@ -3,7 +3,7 @@ using CourseMapping.Domain.Exceptions;
 
 namespace CourseMapping.Domain
 {
-    public class CourseNumber
+    class CourseNumber
     {
         public string Number { get; private set; }
         public CourseNumber(string number)

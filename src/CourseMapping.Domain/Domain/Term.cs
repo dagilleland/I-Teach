@@ -2,7 +2,7 @@ using System;
 
 namespace CourseMapping.Domain
 {
-    public class Term
+    class Term
     {
         public Month Month { get; private set; }
         public int Year { get; private set; }

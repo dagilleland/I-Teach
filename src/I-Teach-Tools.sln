@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseMapping.Domain", "CourseMapping.Domain\CourseMapping.Domain.csproj", "{FB822251-5345-4E64-AEA9-7BCFC29BAD29}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseMapping", "CourseMapping.Domain\CourseMapping.csproj", "{FB822251-5345-4E64-AEA9-7BCFC29BAD29}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Planning Docs", "Planning Docs", "{7F22205B-0C83-4414-9D4F-8EADB6AC67E5}"
 	ProjectSection(SolutionItems) = preProject

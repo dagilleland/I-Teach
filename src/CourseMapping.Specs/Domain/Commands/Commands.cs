@@ -1,4 +1,8 @@
-﻿using System;
+﻿using CourseMapping.Commands;
+using FakeItEasy;
+using SimpleCqrs.Commanding;
+using SimpleCqrs.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +19,19 @@ namespace CourseMapping.Specs.Domain.Commands
         [Fact]
         public void Scenario_Name()
         {
-            this.When(_ => TBA()).BDDfy();
+            ProposeCourse command = null;
+            this.When(_ => WhenIProposeANewCourse("Domain Driven Design", "Program of Study", out command))
+                .Then(_ => ThenICanUniquelyIdentifyTheCourse(command))
+                //.And(_ => ThenTheCourseIsProposed
+                .BDDfy();
+        }
+        private void WhenIProposeANewCourse(string courseName, string programOfStudy, out ProposeCourse command)
+        {
+            command = new ProposeCourse(courseName, programOfStudy);
+        }
+        private void ThenICanUniquelyIdentifyTheCourse(ProposeCourse command)
+        {
+            Assert.NotEqual(Guid.Empty, command.AggregateRootId);
         }
         public void TBA()
         {
