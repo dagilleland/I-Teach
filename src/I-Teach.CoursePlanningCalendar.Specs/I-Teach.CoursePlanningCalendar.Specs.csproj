@@ -111,6 +111,7 @@
     <Compile Include="Stories\DraftCalendars\Accept_Draft_Calendar.cs" />
     <Compile Include="UnitTests\Commands\AddTopic_Command.cs" />
     <Compile Include="UnitTests\Commands\CreatePlanningCalendar_Command.cs" />
+    <Compile Include="UnitTests\Domain\TopicName_Value_Type.cs" />
     <Compile Include="UnitTests\Events\Class1.cs" />
   </ItemGroup>
   <ItemGroup>

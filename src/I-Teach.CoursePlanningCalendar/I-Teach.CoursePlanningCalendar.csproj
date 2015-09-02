@@ -56,16 +56,29 @@
     <Compile Include="Aggregates\PlanningCalendar.cs" />
     <Compile Include="Bus\CommandEventBus.cs" />
     <Compile Include="Commands\AddTopic.cs" />
+    <Compile Include="Commands\AppendEvaluation.cs" />
     <Compile Include="Commands\CreatePlanningCalendar.cs" />
+    <Compile Include="Commands\RemoveTopic.cs" />
+    <Compile Include="Commands\SchedulePlanningCalendar.cs" />
+    <Compile Include="Domain\CalendarItem.cs" />
+    <Compile Include="Domain\EvaluationComponent.cs" />
+    <Compile Include="Domain\Topic.cs" />
+    <Compile Include="Domain\TopicName.cs" />
+    <Compile Include="Domain\WorkPeriod.cs" />
     <Compile Include="Events\AbstractEventWithId.cs" />
-    <Compile Include="Events\AddTopic.cs" />
+    <Compile Include="Events\DurationChanged.cs" />
+    <Compile Include="Events\PlanningCalendarScheduled.cs" />
+    <Compile Include="Events\TopicAdded.cs" />
     <Compile Include="Events\CalendarCreated.cs" />
     <Compile Include="Events\Model\Aggregates.cs" />
     <Compile Include="Events\SetCalendarHolidays.cs" />
+    <Compile Include="Events\TopicChanged.cs" />
+    <Compile Include="Events\TopicRemoved.cs" />
+    <Compile Include="Events\TopicsReordered.cs" />
     <Compile Include="Fetch\Model\DraftPlanningCalendar.cs" />
     <Compile Include="Fetch\Repository\IPlanningCalendarRepository.cs" />
     <Compile Include="Fetch\Repository\PlanningCalendarRepository.cs" />
-    <Compile Include="Fetch\Repository\ReadModelDataStore.cs" />
+    <Compile Include="Fetch\ReadModelDataStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -78,9 +91,7 @@
       <Name>CommonUtilities</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Domain\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseMapping", "CourseMapping.Domain\CourseMapping.csproj", "{FB822251-5345-4E64-AEA9-7BCFC29BAD29}"
 EndProject
@@ -49,6 +49,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(Common)", "(Common)", "{E3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonUtilities", "CommonUtilities\CommonUtilities.csproj", "{5776AB50-7E95-45B3-A7B8-6AD23ECD0E5D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "I-Teach.CoursePlanningCalendar.Web", "I-Teach.CoursePlanningCalendar.Web\I-Teach.CoursePlanningCalendar.Web.csproj", "{0F65A2E9-3512-488C-A3CE-46ACA544B5EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -83,6 +85,10 @@ Global
 		{5776AB50-7E95-45B3-A7B8-6AD23ECD0E5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5776AB50-7E95-45B3-A7B8-6AD23ECD0E5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5776AB50-7E95-45B3-A7B8-6AD23ECD0E5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F65A2E9-3512-488C-A3CE-46ACA544B5EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F65A2E9-3512-488C-A3CE-46ACA544B5EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F65A2E9-3512-488C-A3CE-46ACA544B5EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F65A2E9-3512-488C-A3CE-46ACA544B5EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,5 +100,6 @@ Global
 		{A3F60323-8DC9-4A53-975A-7B7F3A5F46E0} = {450610DC-CD9D-4EB3-9C01-0565B1EBA88D}
 		{554B8D6E-4104-4E50-939A-8E9648BCBA56} = {450610DC-CD9D-4EB3-9C01-0565B1EBA88D}
 		{5776AB50-7E95-45B3-A7B8-6AD23ECD0E5D} = {E32C7EAE-839B-439B-AB67-249203AEC86C}
+		{0F65A2E9-3512-488C-A3CE-46ACA544B5EB} = {450610DC-CD9D-4EB3-9C01-0565B1EBA88D}
 	EndGlobalSection
 EndGlobal

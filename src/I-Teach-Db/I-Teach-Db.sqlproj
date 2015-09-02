@@ -64,8 +64,12 @@
     <Build Include="dbo\Tables\Aggregates.sql" />
     <Build Include="dbo\Tables\Events.sql" />
     <Build Include="dbo\Tables\DraftPlanningCalendars.sql" />
+    <Build Include="dbo\Tables\Topics.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="I-Teach-Db.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="I-Teach-Db.refactorlog" />
   </ItemGroup>
 </Project>

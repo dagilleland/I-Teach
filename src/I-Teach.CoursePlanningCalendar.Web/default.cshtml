@@ -1,0 +1,355 @@
+﻿@using System.Web.WebPages;
+
+@{
+    Layout = "_Layout.cshtml";
+    string selectedCalendarText = Request["selectedCalendar"];
+    string postCommand = Request["postCommand"];
+    string json = "[]";
+    Guid selectedCalendar;
+    Guid.TryParse(selectedCalendarText, out selectedCalendar);
+    var app = I_Teach.CoursePlanningCalendar.Web.AppProxy.Instance();
+
+    if (IsPost)
+    {
+        // If statements for each possible post command
+
+        // Switch to a different Planning Calendar
+        if ("switchCalendar".Equals(postCommand))
+        {
+            selectedCalendarText = Request["calendar"];
+            Guid.TryParse(selectedCalendarText, out selectedCalendar);
+        }
+
+        // Create a new course
+        if ("createCourse".Equals(postCommand))
+        {
+            app.CreateCourse(Request["courseName"], Request["courseNumber"], int.Parse(Request["totalHours"]));
+        }
+
+        // Create a draft Planning Calendar
+        if ("createCalendar".Equals(postCommand))
+        {
+            app.CreateCourseCalendar(Guid.Parse(Request["course"]));
+        }
+
+        // Add Topic to selected Planning Calendar
+        if ("appendTopic".Equals(postCommand))
+        {
+            if (Guid.TryParse(selectedCalendarText, out selectedCalendar))
+            {
+                app.AppendTopic(selectedCalendar, Request["appendTitle"], Request["appendDescription"], double.Parse(Request["appendDuration"]));
+            }
+        }
+
+        // Add Evaluation to selected Planning Calendar
+        if ("appendEvaluation".Equals(postCommand))
+        {
+            if (Guid.TryParse(selectedCalendarText, out selectedCalendar))
+            {
+                var evalName = Request["evalName"];
+                var evalWeight = int.Parse(Request["evalWeight"]);
+                var evalDuration = double.Parse(Request["evalDuration"]);
+                app.AppendEvaluation(selectedCalendar, evalName, evalWeight, evalDuration);
+            }
+        }
+
+        // Add Work Period to selected Planning Calendar
+        if ("appendWorkPeriod".Equals(postCommand))
+        {
+            if (Guid.TryParse(selectedCalendarText, out selectedCalendar))
+            {
+                var workTitle = Request["workTitle"];
+                var workDuration = double.Parse(Request["workDuration"]);
+                app.AppendWorkPeriod(selectedCalendar, workTitle, workDuration);
+            }
+        }
+
+        // Schedule the selected Planning Calendar for a particular school term
+        if ("scheduleCalendarForTerm".Equals(postCommand))
+        {
+            var parts = Request["term"].Split('-');
+            app.ScheduleCourseCalendar(Guid.Parse(Request["calendarToSchedule"]), int.Parse(parts[0]), parts[1]);
+        }
+
+        // Schedule planned dates for evaluation components that have a duration
+        if ("scheduleEvaluation".Equals(postCommand))
+        {
+            if (Guid.TryParse(selectedCalendarText, out selectedCalendar))
+            {
+            }
+        }
+
+        // Schedule specific days off in the term for the selected Planning Calendar
+        if ("editDaysOff".Equals(postCommand))
+        {
+            if (Guid.TryParse(selectedCalendarText, out selectedCalendar))
+            {
+            }
+        }
+
+        // Approve the selected Planning Calendar
+        if ("approvePlanningCalendar".Equals(postCommand))
+        {
+            if (Guid.TryParse(selectedCalendarText, out selectedCalendar))
+            {
+            }
+        }
+    }
+
+}
+
+<script>
+    angular.module('anApp', ['ui.bootstrap']);
+</script>
+<div class="container" ng-app="anApp">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Planning Calendar Form Concepts <small><a href="default"><i class="glyphicon glyphicon-refresh"></i></a></small></h1>
+            <form method="post" action="~/default.cshtml">
+                <input type="hidden" name="postCommand" value="switchCalendar" />
+                <input type="hidden" name="selectedCalendar" value="@selectedCalendarText" />
+                @{
+                    if (app.ListCalendars().Count() > 0)
+                    {
+                <select name="calendar" class="form-control">
+                    <option value=""><i>Select a Calendar</i></option>
+                    @foreach (var item in app.ListCalendars())
+                            {
+                            <option value="@item.Id" selected="@(item.Id.Equals(selectedCalendar))">
+                                @item.CourseName -
+                                @if (item.Year.HasValue)
+                                    {
+                                    <text>(@item.Month @item.Year)</text>
+                                    }
+                                    else
+                                    {
+                                    <text>(no scheduled term)</text>
+                                    }
+                            </option>
+                            }
+                </select>
+                <button type="submit" class="btn btn-default">Select Draft Calendar</button>
+                    }
+                }
+            </form>
+
+            <form method="post" action="~/default.cshtml">
+                <input type="hidden" name="postCommand" value="approvePlanningCalendar" />
+                <button type="submit" class="btn btn-default">Approve the selected Calendar</button>
+            </form>
+
+            @if (app.HasException)
+            {
+                <div class="alert alert-danger">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    @app.ExceptionMessage
+                </div>
+            }
+            
+            <div>
+                <hr />
+            </div>
+
+            <h2>Planning Calendar Commands</h2>
+            <tabset>
+                <tab heading="Create Course (AdHoc)">
+                    <form class="form-horizontal" action="~/default.cshtml">
+                        <input type="hidden" name="postCommand" value="createCourse" />
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="courseName">Course Name</label>
+                            <div class="col-md-4">
+                                <input id="courseName" name="courseName" type="text" placeholder="Course Name" class="form-control input-md" required="">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="courseNumber">Course Number</label>
+                            <div class="col-md-4">
+                                <input id="courseNumber" name="courseNumber" type="text" placeholder="Course Number" class="form-control input-md" required="">
+                            </div>
+                        </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="totalHours">Total Hours</label>
+                            <div class="col-md-2">
+                                <input id="totalHours" name="totalHours" type="number" placeholder="Hours" class="form-control input-md" required="">
+                            </div>
+                        </div>
+                        <!-- Button -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="addCourse"></label>
+                            <div class="col-md-4">
+                                <button id="addCourse" class="btn btn-primary">Add course</button>
+                            </div>
+                        </div>
+                    </form>
+                </tab>
+
+                <tab heading="Create Draft Calendar">
+                    <form method="post" action="~/default.cshtml">
+                        <input type="hidden" name="postCommand" value="createCalendar" />
+                        @{
+                        var courseList = app.ListCourses();
+                        if (courseList.Count > 0)
+                        {
+                        <fieldset>
+                            <select name="course" class="form-control">
+                                <option value=""><i>Select a course</i></option>
+                                @foreach (var item in courseList)
+                                        {
+                                    <option value="@item.Id">@item.Number - @item.Name (@item.TotalHours hrs over @item.Weeks weeks)</option>
+                                        }
+                            </select>
+                            <button type="submit" class="btn btn-default">Create Draft Calendar</button>
+                        </fieldset>
+                        }
+                        }
+                    </form>
+                </tab>
+
+                <tab heading="Add Items">
+                    <form method="post" action="~/default.cshtml">
+                        <input type="hidden" name="postCommand" value="appendTopic" />
+                        <div class="row">
+                            <div class="col-sm-2"><button type="submit" class="btn btn-default">Append Topic</button></div>
+                            <div class="col-sm-4"><input type="text" name="appendTitle" placeholder="Title" /></div>
+                            <div class="col-sm-4"><input type="text" name="appendDescription" placeholder="Description" /></div>
+                            <div class="col-sm-2"><input type="number" name="appendDuration" placeholder="Duration" /></div>
+                        </div>
+                    </form>
+                    <form method="post" action="~/default.cshtml">
+                        <input type="hidden" name="postCommand" value="appendEvaluation" />
+                        <div class="row">
+                            <div class="col-sm-2"><button type="submit" class="btn btn-default">Append Evaluation</button></div>
+                            <div class="col-sm-6"><input type="text" name="evalName" placeholder="Eval Name" /></div>
+                            <div class="col-sm-2"><input type="number" name="evalWeight" placeholder="Weight" /></div>
+                            <div class="col-sm-2"><input type="number" name="evalDuration" placeholder="Duration" /></div>
+                        </div>
+                    </form>
+                    <form method="post" action="~/default.cshtml">
+                        <input type="hidden" name="postCommand" value="appendWorkPeriod" />
+                        <div class="row">
+                            <div class="col-sm-2"><button type="submit" class="btn btn-default">Append Work Period</button></div>
+                            <div class="col-sm-4"><input type="text" name="workTitle" placeholder="Title" />Work Period Title</div>
+                            <div class="col-sm-2"><input type="number" name="workDuration" placeholder="Duration" /></div>
+                        </div>
+                    </form>
+                </tab>
+
+                <tab heading="Reorder Items">
+                    <form method="post" action="~/default.cshtml">
+                        <button type="submit" class="btn btn-default"></button>
+                    </form>
+                </tab>
+
+                <tab heading="Schedule Draft Calendar">
+                    <form method="post" action="~/default.cshtml">
+                        <input type="hidden" name="postCommand" value="scheduleCalendarForTerm" />
+                        @{
+                            if (app.ListCalendars().Count() > 0)
+                            {
+                        <fieldset>
+                            <select name="calendarToSchedule" class="form-control">
+                                @foreach (var item in app.ListCalendars())
+                                        {
+                                        <option value="@item.Id">@item.CourseName</option>
+                                        }
+                            </select>
+                            <select name="term" class="form-control">
+                                <option value="2015-Sep">September 2015</option>
+                                <option value="2016-Jan">January 2016</option>
+                                <option value="2016-May">May 2016</option>
+                                <option selected value="2016-Sep">September 2016</option>
+                            </select>
+                            <button type="submit" class="btn btn-default">Schedule Draft Calendar</button>
+                        </fieldset>
+                            }
+                        }
+                    </form>
+                </tab>
+
+                <tab heading="Schedule Evaluations">
+                    <form method="post" action="~/default.cshtml">
+                        <input type="hidden" name="postCommand" value="scheduleEvaluation" />
+                        <button type="submit" class="btn btn-default"></button>
+                    </form>
+                </tab>
+
+                <tab heading="Days Off">
+                    <form method="post" action="~/default.cshtml">
+                        <input type="hidden" name="postCommand" value="editDaysOff" />
+                        <button type="submit" class="btn btn-default"></button>
+                    </form>
+                </tab>
+            </tabset>
+        </div>
+    </div>
+
+    <div class="col-md-8 bg-success">
+        <h2>Selected Calendar</h2>
+        @{
+            if (Guid.TryParse(selectedCalendarText, out selectedCalendar))
+            {
+                var courseInfo = app.GetCalendar(selectedCalendar);
+                <div>
+                    <h2>@courseInfo.CourseNumber - @courseInfo.CourseName <small>(@courseInfo.ClassesPerWeek classes per week)</small></h2>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2"><label>Sequence</label></div>
+                    <div class="col-sm-4"><label>Title</label></div>
+                    <div class="col-sm-4"><label>Description</label></div>
+                    <div class="col-sm-2"><label>Duration (# classes)</label></div>
+                </div>
+
+                var topics = app.ListTopics(selectedCalendar);
+                if (topics.Count() > 0)
+                {
+                    foreach (var item in topics)
+                    {
+                        <div class="row">
+                            <div class="col-sm-2"><label>@item.Sequence</label></div>
+                            <div class="col-sm-4"><label>@item.Title</label></div>
+                            <div class="col-sm-4"><label>@item.Description</label></div>
+                            <div class="col-sm-2"><label>@item.Duration</label></div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-md-12">There are no current topics for this course</div>
+                }
+            }
+        }
+    </div>
+    <div class="col-md-4 bg-info">
+        <h2>Planning Calendars</h2>
+        @{
+            // List all the planning calendars.
+            var calendars = app.ListCalendars();
+            if (calendars.Count() > 0)
+            {
+                <ul>
+                    @foreach (var item in calendars)
+                    {
+                        <li>
+                            @item.CourseNumber - @item.CourseName
+                            @if (item.Year.HasValue)
+                            {
+                                <text>(@item.Month @item.Year)</text>
+                            }
+                            else
+                            {
+                                <text>(not scheduled)</text>
+                            }
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <div>There are no planning calendars in the system.</div>
+            }
+        }
+    </div>
+</div>

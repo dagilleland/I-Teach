@@ -8,7 +8,7 @@ As a *course coordinator*, I want a way to create and edit a Planning Calendar t
 
 Each course is 15 weeks long. Planning calendars can be copied/applied to various terms (e.g.: Fall 2014 or Winter 2015) and sections.
 
-Topics on the Planning Calendar are short descriptions of what is being covered at a particular point in the course. Students only need to see those short topic names, but as Instructors we would benefit from including additional details on the topics. Those details might consist of things such as a list of key points or objectives, comments about the topic, notes about the in-class examples to be used or the scenarios to be used for testing (labs/exams), etc. This extra information can be helpful in planning the sequence of the topics and also help the instructor in remembering important aspects of the topic when it comes time to teach it in class.
+Topics on the Planning Calendar are short descriptions of what is being covered at a particular point in the course. Students only need to see those short topic names, but as Instructors we would benefit from including additional details on the topics. Those details might consist of things such as a list of key points or objectives, comments about the topic, notes about the in-class examples to be used or the scenarios to be used for testing (labs/exams), etc. This extra information can be helpful in planning the **sequence** of the topics (and in-class evaluations) and also help the instructor in remembering important aspects of the topic when it comes time to teach it in class.
 
 ### Courses and Course Offerings
 

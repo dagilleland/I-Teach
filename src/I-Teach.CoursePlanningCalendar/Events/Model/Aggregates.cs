@@ -18,6 +18,9 @@ namespace I_Teach.CoursePlanningCalendar.Events.Model
     class Event
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+
         public Guid AggregateId { get; set; }
         [Column(TypeName = "varchar(MAX)")]
         public string Type { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using I_Teach.CoursePlanningCalendar.Fetch.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,6 @@ namespace I_Teach.CoursePlanningCalendar.Fetch
     {
         DraftPlanningCalendar FindDraftPlanningCalendar(Guid id);
         IEnumerable<DraftPlanningCalendar> ListDraftPlanningCalendars();
+        IEnumerable<Topic> ListTopics(Guid draftPlanningCalendarId);
     }
 }

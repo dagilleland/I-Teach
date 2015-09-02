@@ -1,0 +1,29 @@
+﻿{
+    "courseNumber": "DMIT 2018",
+    "courseName": "Application Development 2",
+    "startDate": "Sep 8 2015",
+    "endDate": "Dec 20 2015",
+    "lastUpdated": "Sep 4, 2015",
+    "classesPerWeek": 3,
+    "totalHours": 90,
+    "totalWeeks": 15,
+    "readingBreak": null,
+    "daysOff": [ 
+        { "day": "Sept 7, 2015", "reason":  "Labour Day" }
+    ],
+    "weeks": [
+        {
+            "firstDayOfWeek": "Sept 7, 2015",
+            "items": [
+                {
+                    "name": "Course Introduction",
+                    "duration": 1.0
+                },
+                {
+                    "name": "DVCS - Git Basics",
+                    "duration": 3.0
+                }
+            ]
+        }
+    ]
+}

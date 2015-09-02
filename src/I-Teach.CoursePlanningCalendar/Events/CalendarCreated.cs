@@ -10,5 +10,7 @@ namespace I_Teach.CoursePlanningCalendar.Events
     {
         public string CourseName { get; set; }
         public string CourseNumber { get; set; }
+        public int TotalHours { get; set; }
+        public int ClassesPerWeek { get; set; }
     }
 }
