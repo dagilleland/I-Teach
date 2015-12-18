@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\CourseSection.cs" />
+    <Compile Include="Models\DomainStateException.cs" />
     <Compile Include="Models\Evaluation.cs" />
     <Compile Include="Models\EvaluationComponents.cs" />
     <Compile Include="Models\Mark.cs" />
