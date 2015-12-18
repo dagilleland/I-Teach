@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\PrepareClassMarks.cs" />
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\CourseSection.cs" />
     <Compile Include="Models\DomainStateException.cs" />
