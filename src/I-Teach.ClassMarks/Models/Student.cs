@@ -7,16 +7,16 @@ namespace I_Teach.ClassMarks.Models
 {
     public class Student
     {
-        private StudentId Id { get; private set; }
-        private string FirstName { get; private set; }
-        private string LastName { get; private set; }
+        public StudentId Id { get; private set; }
+        public string FirstName { get; private set; }
+        public string LastName { get; private set; }
 
         public Student(StudentId id, string firstName, string lastName)
         {
             // TODO: Complete member initialization
-            this.Id = id;
-            this.FirstName = firstName;
-            this.LastName = lastName;
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
         }
     }
 }

@@ -60,6 +60,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTests\Course_Entity_Model.cs" />
+    <Compile Include="UnitTests\StudentId_Value_Type.cs" />
+    <Compile Include="UnitTests\Student_Entity_Model.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
