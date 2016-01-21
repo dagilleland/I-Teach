@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Dynamic Generation Inc.")]
 [assembly: AssemblyProduct("I_Teach_Web")]
-[assembly: AssemblyCopyright("Copyright © Dynamic Generation Inc. 2016")]
+[assembly: AssemblyCopyright("Copyright © Dynamic Generation Inc. 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("f6676837-f401-434c-b0cf-76580e7f167a")]
+[assembly: Guid("ef0d9a40-537f-4e4a-943a-5aa6c90e7a29")]
 
 // Version information for an assembly consists of the following four values:
 //
