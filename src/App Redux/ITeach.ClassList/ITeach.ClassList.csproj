@@ -4,14 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{18D1C08D-74E2-42FD-8183-2E89DC68BA22}</ProjectGuid>
+    <ProjectGuid>{8A39BFD7-FC43-4E5C-9621-14A46F707D3A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Application.Infrastructure.Specs</RootNamespace>
-    <AssemblyName>Application.Infrastructure.Specs</AssemblyName>
+    <RootNamespace>ITeach.ClassList</RootNamespace>
+    <AssemblyName>ITeach.ClassList</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -83,20 +83,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Commands\AddStudent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestData\Aggregates\Airline.cs" />
-    <Compile Include="TestData\Commands\ScheduleFlight.cs" />
-    <Compile Include="TestData\DataStores\EFDataStore.cs" />
-    <Compile Include="TestData\DomainAggregate.cs" />
-    <Compile Include="TestData\Events\FlightScheduled.cs" />
-    <Compile Include="TestData\Models\Flight.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Application.Infrastructure\Application.Infrastructure.csproj">
-      <Project>{b8e314b5-6214-444f-9b7e-ff6339c38d61}</Project>
-      <Name>Application.Infrastructure</Name>
+    <Folder Include="Aggregates\" />
+    <Folder Include="CommandHandlers\" />
+    <Folder Include="DomainModel\" />
+    <Folder Include="Events\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonInfrastructure\CommonInfrastructure.csproj">
+      <Project>{93da6c24-bdec-4bbf-a9ad-dc1b42f0f312}</Project>
+      <Name>CommonInfrastructure</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

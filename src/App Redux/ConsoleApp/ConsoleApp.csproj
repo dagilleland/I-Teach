@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{41256F07-2F1A-4564-844B-4A7FB2714223}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{5326D1F9-BD4E-474B-B38D-601E82C55CC0}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>I_Teach.ViewModels</RootNamespace>
-    <AssemblyName>I-Teach.ViewModels</AssemblyName>
+    <RootNamespace>ConsoleApp</RootNamespace>
+    <AssemblyName>ConsoleApp</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -39,12 +41,41 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClassMarksDomain\ClassMarksContext.cs" />
-    <Compile Include="CourseAdministrationDomain\Course.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CourseOfferingDomain\" />
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonInfrastructure\CommonInfrastructure.csproj">
+      <Project>{93da6c24-bdec-4bbf-a9ad-dc1b42f0f312}</Project>
+      <Name>CommonInfrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITeach.ApplicationHost\ITeach.ApplicationHost.csproj">
+      <Project>{223cc169-f4d8-429b-9a89-e5d5edd663fc}</Project>
+      <Name>ITeach.ApplicationHost</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITeach.ClassEvaluation\ITeach.ClassEvaluation.csproj">
+      <Project>{3592fbdb-db2b-4a8e-abb6-314ca34a1888}</Project>
+      <Name>ITeach.ClassEvaluation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITeach.ClassList\ITeach.ClassList.csproj">
+      <Project>{8a39bfd7-fc43-4e5c-9621-14a46f707d3a}</Project>
+      <Name>ITeach.ClassList</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITeach.CourseEvaluation\ITeach.CourseEvaluation.csproj">
+      <Project>{b7e5dea2-2a79-489f-a5a5-fd874821d7c3}</Project>
+      <Name>ITeach.CourseEvaluation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITeach.School\ITeach.School.csproj">
+      <Project>{0a8e0cf3-2228-4c03-a650-0ad778a3326e}</Project>
+      <Name>ITeach.School</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITeach.StudentMark\ITeach.StudentMark.csproj">
+      <Project>{ad2375d8-bfd8-4223-935c-5657c0b9e6a9}</Project>
+      <Name>ITeach.StudentMark</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
