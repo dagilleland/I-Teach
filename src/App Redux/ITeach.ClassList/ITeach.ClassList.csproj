@@ -83,19 +83,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aggregates\AggregateRoot.cs" />
     <Compile Include="Commands\AddStudent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Aggregates\" />
+    <Folder Include="BusinessRules\" />
     <Folder Include="CommandHandlers\" />
     <Folder Include="DomainModel\" />
     <Folder Include="Events\" />
+    <Folder Include="FetchModels\" />
+    <Folder Include="GetRepository\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommonInfrastructure\CommonInfrastructure.csproj">
       <Project>{93da6c24-bdec-4bbf-a9ad-dc1b42f0f312}</Project>
       <Name>CommonInfrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITeach.School\ITeach.School.csproj">
+      <Project>{0a8e0cf3-2228-4c03-a650-0ad778a3326e}</Project>
+      <Name>ITeach.School</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

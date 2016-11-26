@@ -12,4 +12,11 @@ namespace ITeach.ClassList.Commands
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }
+    public class OpenSectionForRegistration
+    {
+        public string CourseNumber { get; set; }
+        public string Term { get; set; }
+        public int Year { get; set; }
+        public string Section { get; set; }
+    }
 }

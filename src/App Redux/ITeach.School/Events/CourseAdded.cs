@@ -15,9 +15,11 @@ namespace ITeach.School.Events
     }
     public class CourseScheduled
     {
-        public string CourseNumber { get; set; }
-        public string Term { get; set; }
-        public int Year { get; set; }
-        public string[] Sections { get; set; }
+        public string CourseOfferingId { get; set; }
+    }
+    public class CourseSectionScheduled
+    {
+        public string CourseOfferingId { get; set; }
+        public string Section { get; set; }
     }
 }

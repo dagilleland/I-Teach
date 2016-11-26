@@ -90,7 +90,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="BusinessRules\" />
     <Folder Include="CommandHandlers\" />
+    <Folder Include="FetchModels\" />
+    <Folder Include="GetRepository\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommonInfrastructure\CommonInfrastructure.csproj">

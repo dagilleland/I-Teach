@@ -43,10 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Aggregates\" />
+    <Folder Include="BusinessRules\" />
     <Folder Include="CommandHandlers\" />
     <Folder Include="Commands\" />
     <Folder Include="DomainModel\" />
     <Folder Include="Events\" />
+    <Folder Include="FetchModels\" />
+    <Folder Include="GetRepository\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

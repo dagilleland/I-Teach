@@ -17,7 +17,7 @@ namespace ITeach.CourseEvaluation.Aggregates
         , IHandleCommand<AddEvaluationGroupItem>
         , IHandleCommand<UseDraftEvaluationAsCurrent>
     {
-        private Dictionary<string, Course> _Repository = new Dictionary<string, Course>();
+        private static Dictionary<string, Course> _Repository = new Dictionary<string, Course>();
         public IEnumerable<object> Handle(AddEvaluationItem command)
         {
             var events = new List<object>();

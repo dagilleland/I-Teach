@@ -65,4 +65,36 @@ namespace ITeach.School.DomainModel
             Value = value;
         }
     }
+
+    internal class Term
+    {
+        public enum StartMonth { Sep, Jan, May }
+        public StartMonth CalendarStart { get; private set; }
+        public int Year { get; private set; }
+
+        public Term(StartMonth semester, int year)
+        {
+            this.CalendarStart = semester;
+            Year = year;
+        }
+    }
+
+    internal class CourseOffering
+    {
+        public string OfferingId
+        {
+            get
+            {
+                return string.Format("{0}-{1}-{2}", CourseNumber.Value, Term.Year, Term.CalendarStart);
+            }
+        }
+        public CourseNumber CourseNumber { get; set; }
+        public Term Term { get; set; }
+
+        public CourseOffering(CourseNumber courseNumber, Term term)
+        {
+            CourseNumber = courseNumber;
+            Term = term;
+        }
+    }
 }
